@@ -1,7 +1,9 @@
+// import des packages
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+// Fonction de Signup
 exports.signup = (req, res, next) => {
   bcrypt.hash(req.body.password, 10)
     .then(hash => {
@@ -19,8 +21,8 @@ exports.signup = (req, res, next) => {
 /*
 Dans cette fonction singup :
 
-nous appelons la fonction de hachage de bcrypt dans notre mot de passe et lui demandons de « saler » le mot de passe 10 fois. Plus la valeur est élevée, 
-plus l'exécution de la fonction sera longue, et plus le hachage sera sécurisé. Pour plus d'informations, consultez la documentation de bcrypt ;
+nous appelons la fonction de hachage de bcrypt dans notre mot de passe et lui demandons de « saler » le mot de passe 10 fois. 
+Plus la valeur est élevée, plus l'exécution de la fonction sera longue, et plus le hachage sera sécurisé.
 
 il s'agit d'une fonction asynchrone qui renvoie une Promise dans laquelle nous recevons le hash généré ;
 
@@ -56,7 +58,7 @@ exports.login = (req, res, next) => {
 /*
 Dans le code ci-dessus :
 
-nous utilisons la fonction sign dejsonwebtoken pour encoder un nouveau token ;
+nous utilisons la fonction sign de jsonwebtoken pour encoder un nouveau token ;
 
 ce token contient l'ID de l'utilisateur en tant que payload (les données encodées dans le token) ;
 

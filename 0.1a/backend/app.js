@@ -1,4 +1,4 @@
-// importez les packages
+// import des packages
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -9,9 +9,10 @@ const path = require('path');
 const stuffRoutes = require('./routes/stuff');
 const userRoutes = require('./routes/user');
 
-// initialisez la variable app qui contiendra 'express'
+// initialisation de la variable app qui contiendra 'express'
 const app = express();
 app.use(cors());
+
 // Connexion a la base de données MongoDB
 mongoose.connect('mongodb+srv://PoppY:U0gh9JQ5vF1dtykS@cluster0.6rjyj.mongodb.net/Cluster0?retryWrites=true&w=majority',
   { useNewUrlParser: true,
@@ -28,10 +29,16 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(bodyParser.json());                     // définissez sa fonction json comme middleware global pour votre application
+// Définit la fonction json comme middleware global pour l'application
+app.use(bodyParser.json());
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
-app.use('/api/stuff', stuffRoutes);             // enregistrez le routeur pour toutes les demandes effectuées vers /api/stuff.
-app.use('/api/auth', userRoutes);               // enregistrez le routeur pour toutes les demandes effectuées vers /api/auth.
 
-module.exports = app;                           // Permet d'exporter l'application créer ( en l'occurence, elle devient accesible pour serveur.js)
+// Enregistrement du routeur pour toutes les demandes effectuées vers /api/stuff.
+app.use('/api/stuff', stuffRoutes);
+
+// Enregistrement du routeur pour toutes les demandes effectuées vers /api/auth.
+app.use('/api/auth', userRoutes);               
+
+// Permet d'exporter l'application créer ( en l'occurence, elle devient accesible pour serveur.js)
+module.exports = app;

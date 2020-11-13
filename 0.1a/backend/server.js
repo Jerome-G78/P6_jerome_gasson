@@ -1,4 +1,5 @@
-const http = require('http');                       // importez le package HTTP natif de Node (permet de créer un serveur)
+// import du package HTTP natif de Node (permet de créer un serveur)
+const http = require('http');
 const { type } = require('os');
 
 // Ajouter l'application 'express'
