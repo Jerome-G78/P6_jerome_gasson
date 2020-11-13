@@ -1,14 +1,17 @@
-const express = require('express');         // importez les packages
+// importez les packages
+const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-// const cors = require('cors');
+const cors = require('cors');
 const path = require('path');
 
+// Ajout des routes pour l'identification & l'authentification
 const stuffRoutes = require('./routes/stuff');
-const userRoutes = require('./routes/user');    // Ajout des routes pour l'identification & l'authentification
+const userRoutes = require('./routes/user');
 
-const app = express();                      // initialisez la variable app qui contiendra 'express'
-// app.use(cors());
+// initialisez la variable app qui contiendra 'express'
+const app = express();
+app.use(cors());
 // Connexion a la base de données MongoDB
 mongoose.connect('mongodb+srv://PoppY:U0gh9JQ5vF1dtykS@cluster0.6rjyj.mongodb.net/Cluster0?retryWrites=true&w=majority',
   { useNewUrlParser: true,

@@ -1,9 +1,8 @@
 const http = require('http');                       // importez le package HTTP natif de Node (permet de créer un serveur)
 const { type } = require('os');
-const app = require('./app');                       // Ajouter l'application 'express'
-/*
-app.set('port', process.env.PORT || 3000);          // Définissez le port d'écoute de l'application 'express'
-*/
+
+// Ajouter l'application 'express'
+const app = require('./app');
 
 // la fonction normalizePort renvoie un port valide, qu'il soit de type numérique ou chaîne
 const normalizePort = val =>{
@@ -42,7 +41,8 @@ const errorHandler = error =>{
     }
 };
 
-const server = http.createServer(app);              // creation du serveur et Appel de l'application 'Express' pour envoie des arguments
+// creation du serveur et Appel de l'application 'Express' pour envoie des arguments
+const server = http.createServer(app);
 
 // un écouteur d'évènements est également enregistré, consignant le port ou le canal nommé sur lequel le serveur s'exécute dans la console.
 server.on('error', errorHandler);
@@ -53,11 +53,3 @@ server.on('listening', ()=>{
 });
 
 server.listen(port);
-
-/*
-const server = http.createServer((req, res) => {    // passez une fonction qui sera exécutée à chaque appel effectué vers ce serveur
-    res.end('Voilà la réponse du serveur !');       // La methode end permet de renvoyer une réponse de type String a l'appelant
-});
-
-server.listen(process.env.PORT || 3000);            // Configuration du port d'écoute du serveur avec la methode listen. Soit le port par défaut, soit le port 3000. (ici)
-*/
