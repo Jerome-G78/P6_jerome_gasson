@@ -2,10 +2,17 @@ const Thing = require('../models/sauces');
 const fs = require('fs');
 
 exports.createThing = (req, res, next) => {
-  const thingObject = JSON.parse(req.body.thing);
-  delete thingObject._id;
+  const sauce = JSON.parse(req.body.sauce);
+  // console.log(req);
+  delete sauce._id;
   const thing = new Thing({
-    ...thingObject,
+  //  ...thingObject, equivalent à :
+    name: sauce.name,
+    manufacturer: sauce.manufacturer,
+    description: sauce.description,
+    mainPepper: sauce.mainPepper,
+    heat: sauce.heat,
+    userId: sauce.userId,
     imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
   });
   thing.save()
@@ -32,7 +39,7 @@ exports.getOneThing = (req, res, next) => {
 exports.modifyThing = (req, res, next) => {
   const thingObject = req.file ?
   {
-    ...JSON.parse(req.body.thing),
+    ...JSON.parse(req.body.sauce),
     imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
   } : { ...req.body };
   Thing.updateOne({ _id: req.params.id }, { ...thingObject, _id: req.params.id })
