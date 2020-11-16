@@ -9,7 +9,7 @@ const stuffCtrl = require('../controllers/sauces');
 const Thing = require('../models/thing');
 
 router.get('/', auth, stuffCtrl.getAllStuff);
-router.post('/', auth, multer, stuffCtrl.createThing);
+router.post('/', auth, multer, stuffCtrl.createThing); //auth
 router.get('/:id', auth, stuffCtrl.getOneThing);
 router.put('/:id', auth, multer, stuffCtrl.modifyThing);
 router.delete('/:id', auth, stuffCtrl.deleteThing);
