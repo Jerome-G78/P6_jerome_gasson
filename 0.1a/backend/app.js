@@ -6,7 +6,7 @@ const cors = require('cors');
 const path = require('path');
 
 // Ajout des routes pour l'identification & l'authentification
-const stuffRoutes = require('./routes/stuff');
+const saucesRoutes = require('./routes/sauces');
 const userRoutes = require('./routes/user');
 
 // initialisation de la variable app qui contiendra 'express'
@@ -34,8 +34,8 @@ app.use(bodyParser.json());
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
-// Enregistrement du routeur pour toutes les demandes effectuées vers /api/stuff.
-app.use('/api/stuff', stuffRoutes);
+// Enregistrement du routeur pour toutes les demandes effectuées vers /api/sauces.
+app.use('/api/sauces', saucesRoutes);
 
 // Enregistrement du routeur pour toutes les demandes effectuées vers /api/auth.
 app.use('/api/auth', userRoutes);               
