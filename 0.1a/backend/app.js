@@ -38,7 +38,7 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/sauces', saucesRoutes);
 
 // Enregistrement du routeur pour toutes les demandes effectuées vers /api/auth.
-app.use('/api/auth', userRoutes);               
+app.use('/api/auth', userRoutes);
 
 // Permet d'exporter l'application créer ( en l'occurence, elle devient accesible pour serveur.js)
 module.exports = app;
