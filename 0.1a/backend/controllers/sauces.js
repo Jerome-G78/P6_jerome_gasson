@@ -1,3 +1,4 @@
+"use strict";
 const Sauces = require('../models/sauces');
 const mongo = require('mongodb');
 const fs = require('fs');
