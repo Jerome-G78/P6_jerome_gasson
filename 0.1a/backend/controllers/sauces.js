@@ -1,6 +1,6 @@
 "use strict";
 const Sauces = require('../models/sauces');
-const mongo = require('mongodb');
+const Like = require('../models/like');
 const fs = require('fs');
 
 exports.createSauces = (req, res, next) => {
@@ -69,26 +69,16 @@ exports.getAllStuff = (req, res, next) => {
   );
 };
 
-exports.likeSauce = (req, res, next) => {
+exports.likeSauces = (req, res, next) => {
   const sauce = JSON.parse(req.body.sauce);
+  console.log(req);
   Sauces.findOne({ _id: req.params.id })
-  const Sauce = new Sauces({
-    usersLiked: sauce.usersLiked + 1
+  const like = new Like({
+    userId : like.userId,
+    like: like.like
   })
 
   Sauces.save()
     .then(() => res.status(201).json({ message: 'Like Pris en compte !'}))
-    .catch(error => res.status(400).json({ error }));
-};
-
-exports.dislikeSauce = (req, res, next) => {
-  const sauce = JSON.parse(req.body.sauce);
-  Sauces.findOne({ _id: req.params.id })
-  const Sauce = new Sauces({
-    usersDisliked: sauce.usersDisliked + 1
-  })
-
-  Sauces.save()
-    .then(() => res.status(201).json({ message: 'Dislike Pris en compte !'}))
     .catch(error => res.status(400).json({ error }));
 };
