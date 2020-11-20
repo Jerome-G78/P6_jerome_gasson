@@ -74,8 +74,9 @@ exports.likeSauces = (req, res, next) => {
   console.log(req);
   Sauces.findOne({ _id: req.params.id })
   const like = new Like({
-    userId : like.userId,
-    like: like.like
+    userId : Like.userId,
+    likes: Like.likes,
+    dislikes: Like.dislikes
   })
 
   Sauces.save()
