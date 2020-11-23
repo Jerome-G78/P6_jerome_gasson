@@ -1,6 +1,5 @@
 "use strict";
 const Sauces = require('../models/sauces');
-const Like = require('../models/like');
 const fs = require('fs');
 
 exports.createSauces = (req, res, next) => {
@@ -13,10 +12,12 @@ exports.createSauces = (req, res, next) => {
     description: sauce.description,
     mainPepper: sauce.mainPepper,
     heat: sauce.heat,
-    userId: sauce.userId,
     imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,
-    usersLiked: 0,
-    usersDisliked: 0
+    userId: sauce.userId,
+    likes: 0,
+    dislikes: 0,
+    usersLiked: [],
+    usersDisliked: []
   });
   Sauce.save()
     .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
@@ -71,15 +72,27 @@ exports.getAllStuff = (req, res, next) => {
 
 exports.likeSauces = (req, res, next) => {
   const sauce = JSON.parse(req.body.sauce);
-  console.log(req);
-  Sauces.findOne({ _id: req.params.id })
-  const like = new Like({
-    userId : Like.userId,
-    likes: Like.likes,
-    dislikes: Like.dislikes
-  })
-
-  Sauces.save()
-    .then(() => res.status(201).json({ message: 'Like Pris en compte !'}))
-    .catch(error => res.status(400).json({ error }));
+  Sauces.updateOne({ _id: req.params.id })
+  if(sauce.like != -1){
+  const Sauce = new Sauces({
+      userId: sauce.userId,
+      likes: likes ++,
+      dislikes: dislikes --,
+      usersLiked: usersLiked.push (userId),
+    });
+    Sauce.save()
+      .then(() => res.status(201).json({ message: 'Like pris en compte !'}))
+      .catch(error => res.status(400).json({ error }));
+  
+  } else {
+  const Sauce = new Sauces({
+      userId: sauce.userId,
+      dislikes: dislikes ++,
+      likes: likes --,
+      usersDisliked: usersDisliked.push (userId),
+    });
+    Sauce.save()
+      .then(() => res.status(201).json({ message: 'Dislike pris en compte !'}))
+      .catch(error => res.status(400).json({ error }));
+  }
 };
