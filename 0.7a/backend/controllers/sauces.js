@@ -85,7 +85,7 @@ exports.likeSauces = (req, res, next) => {
     
     if(like == 0 && uiL >-1){
 
-      sauce.like--;
+      sauce.likes--;
       sauce.usersLiked.splice(uiL,1);
       msg = "Unliked !";
   
