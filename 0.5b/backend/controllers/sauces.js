@@ -73,24 +73,37 @@ exports.getAllStuff = (req, res, next) => {
 exports.likeSauces = (req, res, next) => {
   const sauce = JSON.parse(req.body.sauce);
   Sauces.updateOne({ _id: req.params.id })
-  if(sauce.like != -1){
-  const Sauce = new Sauces({
-      userId: sauce.userId,
-      likes: likes ++,
-      dislikes: dislikes --,
-      usersLiked: usersLiked.push (userId),
-    });
-    Sauce.save()
+  console.log(iuid + ' , '+ iuil);
+    if(sauce.like == 1 && iuil == null){
+    const Sauce = new Sauces({
+        userId: sauce.userId,
+        likes: likes ++,
+        dislikes: dislikes --,
+        usersLiked: array.push(userId)
+      });
+      
+      let iuid = usersDisliked.indexOf(userId);
+      if (iuid !=null){
+        array.splice(iuid);
+      };
+
+      Sauce.save()
       .then(() => res.status(201).json({ message: 'Like pris en compte !'}))
       .catch(error => res.status(400).json({ error }));
-  
-  } else {
+
+    } else if(sauce.like == -1 && iuid == null){
   const Sauce = new Sauces({
       userId: sauce.userId,
       dislikes: dislikes ++,
       likes: likes --,
-      usersDisliked: usersDisliked.push (userId),
+      usersDisliked: array.push(userId),
     });
+
+    let iuil = usersLiked.indexOf(userId);
+    if (iuil !=null){
+      array.splice(iuil);
+    }
+
     Sauce.save()
       .then(() => res.status(201).json({ message: 'Dislike pris en compte !'}))
       .catch(error => res.status(400).json({ error }));

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-// nous créons un schéma de données qui contient les champs souhaités pour chaque Thing, indique leur type ainsi que leur caractère (obligatoire ou non).
+// nous créons un schéma de données qui contient les champs souhaités pour chaque Sauces, indique leur type ainsi que leur caractère (obligatoire ou non).
 
 const SaucesSchema = mongoose.Schema({
   // _id est créer automatiquement 
