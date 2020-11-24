@@ -73,26 +73,25 @@ exports.getAllStuff = (req, res, next) => {
 exports.likeSauces = (req, res, next) => {
   const sauce = JSON.parse(req.body.sauce);
   Sauces.updateOne({ _id: req.params.id })
-  console.log(iuid + ' , '+ iuil);
-    if(sauce.like == 1 && iuil == null){
+  if(sauce.like == 1){
     const Sauce = new Sauces({
-        userId: sauce.userId,
-        likes: likes ++,
-        dislikes: dislikes --,
-        usersLiked: array.push(userId)
-      });
-      
-      let iuid = usersDisliked.indexOf(userId);
-      if (iuid !=null){
-        array.splice(iuid);
-      };
+    userId: sauce.userId,
+    likes: likes ++,
+    dislikes: dislikes --,
+    usersLiked: array.push(userId)
+    });
 
-      Sauce.save()
-      .then(() => res.status(201).json({ message: 'Like pris en compte !'}))
-      .catch(error => res.status(400).json({ error }));
+    let iuid = usersDisliked.indexOf(userId);
+    if (iuid !=null){
+      array.splice(iuid);
+    };
 
-    } else if(sauce.like == -1 && iuid == null){
-  const Sauce = new Sauces({
+    Sauce.save()
+    .then(() => res.status(201).json({ message: 'Like pris en compte !'}))
+    .catch(error => res.status(400).json({ error }));
+
+  } else if(sauce.like == -1){
+    const Sauce = new Sauces({
       userId: sauce.userId,
       dislikes: dislikes ++,
       likes: likes --,
