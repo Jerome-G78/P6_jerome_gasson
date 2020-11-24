@@ -13,8 +13,8 @@ const SaucesSchema = mongoose.Schema({
   userId: { type: String, required: true },
   likes: { type: Number},
   dislikes: {type: Number},
-  usersLiked: {type: Array},
-  usersDisliked: {type: Array}
+  usersLiked: [{type: String}],
+  usersDisliked: [{type: String}]
 });
 
 // nous exportons ce schéma en tant que modèle Mongoose appelé « Sauces », le rendant par là même disponible pour notre application Express.

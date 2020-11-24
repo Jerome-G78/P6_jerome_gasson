@@ -71,41 +71,84 @@ exports.getAllStuff = (req, res, next) => {
 };
 
 exports.likeSauces = (req, res, next) => {
-  const sauce = JSON.parse(req.body.sauce);
-  const uid = sauce.userId;
-  Sauces.updateOne({ _id: req.params.id })
-  if(sauce.like == 1){
-    const Sauce = new Sauces({
-    //userId: sauce.userId,
-    likes: likes ++,
-    dislikes: dislikes --,
-    usersLiked: array.push(uid)
-    });
+  let uid = req.body.userId;
+  let like = req.body.like;
+  
+  Sauces.findOne({ _id: req.params.id }).exec(function (error, sauce){
+    let msg = "";
+    console.log("%s", sauce);
 
-    let uiD = usersDisliked.indexOf(uid);
+    if(like == 1){
+      sauce.likes++;
+      if (sauce.usersLiked.length > 0){
+        sauce.usersLiked=[uid];
+      }
+      else{
+        sauce.usersLiked.push(uid);
+      }
+      msg = "Like pris en compte !";
+    };
+/* 
+    let uiD = sauce.usersDisliked.indexOf(uid);
     if (uiD !=null){
       array.splice(uiD,1);
+      sauce.dislikes --;
+    }
+*/
+    if(like == -1){
+      sauce.dislikes++;
+      if (sauce.usersDisliked.length > 0){
+        sauce.usersDisliked=[uid];
+      } else{
+        sauce.usersDisliked.push(uid);
+      }
+      msg = "Disike pris en compte !";
+    };
+/*  
+    let uiL = sauce.usersLiked.indexOf(uid);
+    if (uiL !=null){
+      array.splice(uiL,1);
+      sauce.like --;
+    }
+*/
+    sauce.save()
+      .then(() => res.status(201).json({ message: msg}))
+      .catch(error => res.status(400).json({ error }));
+  });
+};
+
+/*
+  if(like == 1){
+    sauce.likes++;
+    if (sauce.usersLiked.length > 0){
+      sauce.usersLiked=[uid];
+    }
+    else{
+      sauce.usersLiked.push(uid);
+    }
+
+    let uiD = sauce.usersDisliked.indexOf(uid);
+    if (uiD !=null){
+      array.splice(uiD,1);
+      sauce.dislikes --;
     };
 
-    Sauce.save()
+    sauce.save()
     .then(() => res.status(201).json({ message: 'Like pris en compte !'}))
     .catch(error => res.status(400).json({ error }));
 
-  } else if(sauce.like == -1){
-    const Sauce = new Sauces({
-      //userId: sauce.userId,
-      dislikes: dislikes ++,
-      likes: likes --,
-      usersDisliked: array.push(uid),
-    });
+  } else if(like == -1){
+      sauce.likes--;
+      sauce.usersDisliked.push(uid);
 
-    let uiL = usersLiked.indexOf(uid);
+    let uiL = sauce.usersLiked.indexOf(uid);
     if (uiL !=null){
       array.splice(uiL,1);
+      sauce.dislikes++;
     }
 
-    Sauce.save()
+    sauce.save()
       .then(() => res.status(201).json({ message: 'Dislike pris en compte !'}))
       .catch(error => res.status(400).json({ error }));
   }
-};
+}; */

@@ -5,6 +5,17 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 // Fonction de Signup
+/*
+Dans cette fonction singup :
+
+nous appelons la fonction de hachage de bcrypt dans notre mot de passe et lui demandons de « saler » le mot de passe 10 fois. 
+Plus la valeur est élevée, plus l'exécution de la fonction sera longue, et plus le hachage sera sécurisé.
+
+il s'agit d'une fonction asynchrone qui renvoie une Promise dans laquelle nous recevons le hash généré ;
+
+dans notre bloc then , nous créons un utilisateur et l'enregistrons dans la base de données, en renvoyant une réponse de réussite en cas de succès, 
+et des erreurs avec le code d'erreur en cas d'échec ;
+*/
 exports.signup = (req, res, next) => {
   bcrypt.hash(req.body.password, 10)
     .then(hash => {
@@ -20,17 +31,19 @@ exports.signup = (req, res, next) => {
 };
 
 /*
-Dans cette fonction singup :
+Dans le code ci-dessus :
 
-nous appelons la fonction de hachage de bcrypt dans notre mot de passe et lui demandons de « saler » le mot de passe 10 fois. 
-Plus la valeur est élevée, plus l'exécution de la fonction sera longue, et plus le hachage sera sécurisé.
+nous utilisons la fonction sign de jsonwebtoken pour encoder un nouveau token ;
 
-il s'agit d'une fonction asynchrone qui renvoie une Promise dans laquelle nous recevons le hash généré ;
+ce token contient l'ID de l'utilisateur en tant que payload (les données encodées dans le token) ;
 
-dans notre bloc then , nous créons un utilisateur et l'enregistrons dans la base de données, en renvoyant une réponse de réussite en cas de succès, 
-et des erreurs avec le code d'erreur en cas d'échec ;
+nous utilisons une chaîne secrète de développement temporaire RANDOM_SECRET_KEY pour encoder notre token 
+(à remplacer par une chaîne aléatoire beaucoup plus longue pour la production) ;
+
+nous définissons la durée de validité du token à 24 heures. L'utilisateur devra donc se reconnecter au bout de 24 heures ;
+
+nous renvoyons le token au front-end avec notre réponse.
 */
-
 exports.login = (req, res, next) => {
   User.findOne({ email: req.body.email })
   .then(user => {
@@ -56,17 +69,3 @@ exports.login = (req, res, next) => {
   .catch(error => res.status(500).json({ error }));
 };
 
-/*
-Dans le code ci-dessus :
-
-nous utilisons la fonction sign de jsonwebtoken pour encoder un nouveau token ;
-
-ce token contient l'ID de l'utilisateur en tant que payload (les données encodées dans le token) ;
-
-nous utilisons une chaîne secrète de développement temporaire RANDOM_SECRET_KEY pour encoder notre token 
-(à remplacer par une chaîne aléatoire beaucoup plus longue pour la production) ;
-
-nous définissons la durée de validité du token à 24 heures. L'utilisateur devra donc se reconnecter au bout de 24 heures ;
-
-nous renvoyons le token au front-end avec notre réponse.
-*/
