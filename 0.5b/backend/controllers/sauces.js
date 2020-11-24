@@ -72,18 +72,19 @@ exports.getAllStuff = (req, res, next) => {
 
 exports.likeSauces = (req, res, next) => {
   const sauce = JSON.parse(req.body.sauce);
+  const uid = sauce.userId;
   Sauces.updateOne({ _id: req.params.id })
   if(sauce.like == 1){
     const Sauce = new Sauces({
-    userId: sauce.userId,
+    //userId: sauce.userId,
     likes: likes ++,
     dislikes: dislikes --,
-    usersLiked: array.push(userId)
+    usersLiked: array.push(uid)
     });
 
-    let iuid = usersDisliked.indexOf(userId);
-    if (iuid !=null){
-      array.splice(iuid);
+    let uiD = usersDisliked.indexOf(uid);
+    if (uiD !=null){
+      array.splice(uiD,1);
     };
 
     Sauce.save()
@@ -92,15 +93,15 @@ exports.likeSauces = (req, res, next) => {
 
   } else if(sauce.like == -1){
     const Sauce = new Sauces({
-      userId: sauce.userId,
+      //userId: sauce.userId,
       dislikes: dislikes ++,
       likes: likes --,
-      usersDisliked: array.push(userId),
+      usersDisliked: array.push(uid),
     });
 
-    let iuil = usersLiked.indexOf(userId);
-    if (iuil !=null){
-      array.splice(iuil);
+    let uiL = usersLiked.indexOf(uid);
+    if (uiL !=null){
+      array.splice(uiL,1);
     }
 
     Sauce.save()
