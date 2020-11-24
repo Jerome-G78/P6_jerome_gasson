@@ -92,7 +92,7 @@ exports.likeSauces = (req, res, next) => {
     let uiD = sauce.usersDisliked.indexOf(uid);
     if (uiD !=null){
       array.splice(uiD,1);
-      sauce.dislikes --;
+      sauce.dislikes--;
     }
 */
     if(like == -1){
@@ -108,7 +108,7 @@ exports.likeSauces = (req, res, next) => {
     let uiL = sauce.usersLiked.indexOf(uid);
     if (uiL !=null){
       array.splice(uiL,1);
-      sauce.like --;
+      sauce.like--;
     }
 */
     sauce.save()
