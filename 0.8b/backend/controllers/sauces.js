@@ -120,6 +120,21 @@ exports.getAllSauces = (req, res, next) => {
 /*
 Dans cette fonction likeSauces :
 
+Dans un premier temps, on récupère les réponses userId & like du frontend.
+Ensuite on récupère le params.id pour trouver la sauce concérné par le Like/Dislike via findOne.
+Après on créer des variables dans la fonction msg, uiL, uiD; 
+Pour uiL et uiD on récupère dans les tableaux usersLiked & usersDisliked pour savoir s'ils existent en cas d'annulation de choix.
+
+Si l'utilisateur annule un choix, alors on supprime son userID du tableau correspondant & on ajoute ou supprime 1 au compteur correspondant
+puis on modifie le message qui sera affiché lors de l'appel de save.
+
+Si l'utilisateur aime une sauce et que le tableau usersLiked est vide, on créer une entrée, sinon on ajoute celui-ci au tableau,
+on incrémente le compteur correspondant (likes), puis on modifie le message qui sera affiché lors de l'appel de save.
+
+Si l'utilisateur n'aime pas une sauce, et que le tableau usersDisliked est vide, on créer une entrée, sinon on ajoute celui-ci au tableau,
+on incrémente le compteur correspondant(dislikes), puis on modifie le message qui sera affiché lors de l'appel de save.
+
+En retournant des erreurs avec le code d'erreur en cas d'échec.
 */
 exports.likeSauces = (req, res, next) => {
   let uid = req.body.userId, like = req.body.like;
