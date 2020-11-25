@@ -30,9 +30,8 @@ exports.signup = (req, res, next) => {
     .catch(error => res.status(500).json({ error }));
 };
 
+// Fonction de Login
 /*
-Dans le code ci-dessus :
-
 nous utilisons la fonction sign de jsonwebtoken pour encoder un nouveau token ;
 
 ce token contient l'ID de l'utilisateur en tant que payload (les données encodées dans le token) ;

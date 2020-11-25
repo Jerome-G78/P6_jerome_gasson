@@ -1,4 +1,7 @@
+// Activation du mode STRICT de Javascript
 "use strict";
+
+// import des packages
 const Sauces = require('../models/sauces');
 const fs = require('fs');
 
@@ -6,7 +9,6 @@ exports.createSauces = (req, res, next) => {
   const sauce = JSON.parse(req.body.sauce);
   delete sauce._id;
   const Sauce = new Sauces({
-  //  ...thingObject, equivalent à :
     name: sauce.name,
     manufacturer: sauce.manufacturer,
     description: sauce.description,
@@ -19,23 +21,17 @@ exports.createSauces = (req, res, next) => {
     usersLiked: [],
     usersDisliked: []
   });
+
   Sauce.save()
     .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
     .catch(error => res.status(400).json({ error }));
+
 };
 
 exports.getOneSauces = (req, res, next) => {
-  Sauces.findOne({
-    _id: req.params.id,
-  }).then(
-    (sauce) => {
-      res.status(200).json(sauce);
-    }
-  ).catch(
-    (error) => {
-      res.status(404).json({error: error});
-    }
-  );
+  Sauces.findOne({_id: req.params.id,})
+  .then((sauce) => {res.status(200).json(sauce);})
+  .catch((error) => {res.status(404).json({error: error});});
 };
 
 exports.modifySauces = (req, res, next) => {

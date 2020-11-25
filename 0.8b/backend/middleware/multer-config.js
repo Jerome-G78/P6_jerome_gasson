@@ -1,24 +1,12 @@
 // import des packages
 const multer = require('multer');
 
+// Définition des Types MIME acceptés
 const MIME_TYPES = {
     'image/jpg' : 'jpg',
     'image/jpeg' : 'jpg',
     'image/png' : 'png'
 };
-
-const storage = multer.diskStorage({
-    destination: (req, file, callback) => {
-        callback(null, 'images');
-    },
-    filename: (req, file, callback) => {
-        const name = file.originalname.split(' ').join('_');
-        const extension = MIME_TYPES[file.mimetype];
-        callback(null, name + Date.now() + '.' + extension);
-    }
-});
-
-module.exports = multer({storage: storage}).single('image');
 
 /*
 Dans ce middleware :
@@ -32,3 +20,15 @@ Dans ce middleware :
 
 	nous exportons ensuite l'élément multer entièrement configuré, lui passons notre constante storage et lui indiquons que nous gérerons uniquement les téléchargements de fichiers image.
 */
+const storage = multer.diskStorage({
+    destination: (req, file, callback) => {
+        callback(null, 'images');
+    },
+    filename: (req, file, callback) => {
+        const name = file.originalname.split(' ').join('_');
+        const extension = MIME_TYPES[file.mimetype];
+        callback(null, name + Date.now() + '.' + extension);
+    }
+});
+
+module.exports = multer({storage: storage}).single('image');

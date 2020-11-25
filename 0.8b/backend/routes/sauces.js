@@ -1,13 +1,14 @@
+// import des packages
 const express = require('express');
-const router = express.Router();
-
 const auth = require('../middleware/auth');
 const multer = require('../middleware/multer-config');
-
 const stuffCtrl = require('../controllers/sauces');
-
 const Sauces = require('../models/sauces');
 
+// Initialisation du routeur
+const router = express.Router();
+
+// Définition des routes
 router.get('/', auth, stuffCtrl.getAllStuff);
 router.post('/', auth, multer, stuffCtrl.createSauces);
 router.get('/:id', auth, stuffCtrl.getOneSauces);

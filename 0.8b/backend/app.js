@@ -22,6 +22,7 @@ mongoose.connect('mongodb+srv://PoppY:U0gh9JQ5vF1dtykS@cluster0.6rjyj.mongodb.ne
 
 console.log (app._router);
 
+// Cette partie configure et autorise les requêtes Multi-Origin; définit les Headers & les Methodes
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
@@ -40,5 +41,5 @@ app.use('/api/sauces', saucesRoutes);
 // Enregistrement du routeur pour toutes les demandes effectuées vers /api/auth.
 app.use('/api/auth', userRoutes);
 
-// Permet d'exporter l'application créer ( en l'occurence, elle devient accesible pour serveur.js)
+// Permet d'exporter l'application créer (en l'occurence, elle devient accesible pour serveur.js)
 module.exports = app;
