@@ -57,7 +57,15 @@ exports.getOneSauces = (req, res, next) => {
 Dans cette fonction modifySauces :
 
 Nous commençons par utiliser la fonction parse de JSON pour récupérer les données envoyées par l'utilisateur depuis le "frontend" pour modifier un objet.
+Nous modifions ensuite imageUrl,pour qu'elle contienne le chemin avec le nom de fichier typé (Ex : img.jpg)
 
+Nous l'incluons dans le modèle "Sauces"
+* ...JSON.pase(req.body.sauce) permet d'éclater le tableau "sauce" en éléments libres (permettant d'y intégrer à la volée la chaîne imageUrl)
+
+Enfin nous mettons à jour l'objet de la base de données via la propriété UpdateOne de mongoose.
+* ...sauce permet d'éclater le tableau "sauce" en éléments libres pour y récupérer l'ID "_id: req.params.id" de l'élément à modifier.
+
+Le tout en renvoyant une réponse de réussite en cas de succès, et des erreurs avec le code d'erreur en cas d'échec ;
 */
 exports.modifySauces = (req, res, next) => {
   const sauce = req.file ?
