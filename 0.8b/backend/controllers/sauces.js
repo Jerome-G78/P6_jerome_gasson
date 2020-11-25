@@ -58,26 +58,16 @@ exports.deleteSauces = (req, res, next) => {
   .catch(error => res.status(500).json({ error }));
 };
 
-exports.getAllStuff = (req, res, next) => {
-  Sauces.find().then(
-    (things) => {res.status(200).json(things);}
-  ).catch(
-    (error) => {res.status(400).json({error: error});}
-  );
+exports.getAllSauces = (req, res, next) => {
+  Sauces.find().then((sauce) => {res.status(200).json(sauce);})
+  .catch((error) => {res.status(400).json({error: error});});
 };
 
 exports.likeSauces = (req, res, next) => {
-  let uid = req.body.userId;
-  let like = req.body.like;
+  let uid = req.body.userId, like = req.body.like;
   
   Sauces.findOne({ _id: req.params.id }).exec(function (error, sauce){
-    let msg = "";
-    // console.log("%s", sauce);
-
-    let uiL = sauce.usersLiked.indexOf(uid);
-    console.log(uiL);
-    let uiD = sauce.usersDisliked.indexOf(uid);
-    console.log(uiD);
+    let msg = "", uiL = sauce.usersLiked.indexOf(uid), uiD = sauce.usersDisliked.indexOf(uid);
     
     if(like == 0 && uiL >-1){
 
@@ -85,9 +75,7 @@ exports.likeSauces = (req, res, next) => {
       sauce.usersLiked.splice(uiL,1);
       msg = "Unliked !";
   
-    };
-
-    if(like == 0 && uiD >-1){
+    } else if(like == 0 && uiD >-1){
 
       sauce.dislikes--;
       sauce.usersDisliked.splice(uiD,1);
@@ -100,12 +88,11 @@ exports.likeSauces = (req, res, next) => {
       sauce.likes++;
       if (sauce.usersLiked.length > 0){
         sauce.usersLiked=[uid];
-        msg = "Like pris en compte !";
+        
       } else{
         sauce.usersLiked.push(uid);
-        msg = "Like pris en compte !";
       }
-
+      msg = "Like pris en compte !";
     };
 
     if(like == -1){
@@ -113,11 +100,10 @@ exports.likeSauces = (req, res, next) => {
       sauce.dislikes++;
       if (sauce.usersDisliked.length > 0){
         sauce.usersDisliked=[uid];
-        msg = "Disike pris en compte !";
       } else{
         sauce.usersDisliked.push(uid);
-        msg = "Disike pris en compte !";
       }
+      msg = "Disike pris en compte !";
 
     };
 

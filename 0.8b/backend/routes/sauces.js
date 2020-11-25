@@ -9,7 +9,7 @@ const Sauces = require('../models/sauces');
 const router = express.Router();
 
 // Définition des routes
-router.get('/', auth, stuffCtrl.getAllStuff);
+router.get('/', auth, stuffCtrl.getAllSauces);
 router.post('/', auth, multer, stuffCtrl.createSauces);
 router.get('/:id', auth, stuffCtrl.getOneSauces);
 router.put('/:id', auth, multer, stuffCtrl.modifySauces);
