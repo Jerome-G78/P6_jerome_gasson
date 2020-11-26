@@ -4,7 +4,6 @@
 // import des packages
 const Sauces = require('../models/sauces');
 const fs = require('fs');
-const sauces = require('../models/sauces');
 
 // Fonction de création d'une sauce [C]
 /*
