@@ -67,25 +67,39 @@ Nous récupérons l'ID "_id: req.params.id" de l'élément à modifier.
 Le tout en renvoyant une réponse de réussite en cas de succès, et des erreurs avec le code d'erreur en cas d'échec ;
 */
 exports.modifySauces = (req, res, next) => {
-  const sauceM = req.body;
-  const sauceF = req.file;
-  console.log(sauceF);
-  console.log(sauceM);
+  let sauceM = req.body;
+  let sauceF = req.file;
 
-  Sauces.findOne({ _id: req.params.id }, function (err, sauce) {
-    if(sauceF !=undefined){sauce.imageUrl = `${req.protocol}://${req.get('host')}/images/${sauceF.filename}`}
+  if(sauceF != undefined){
+    let sauceM = JSON.parse(req.body.sauce);
+    Sauces.findOne({ _id: req.params.id }, function (err, sauce) {
+      sauce.name = sauceM.name;
+      sauce.manufacturer = sauceM.manufacturer;
+      sauce.description = sauceM.description;
+      sauce.mainPepper = sauceM.mainPepper;
+      sauce.heat = sauceM.heat;
+      sauce.userId = sauceM.userId;
+      sauce.imageUrl = `${req.protocol}://${req.get('host')}/images/${sauceF.filename}`;
 
-    sauce.name = sauceM.name;
-    sauce.manufacturer = sauceM.manufacturer;
-    sauce.description = sauceM.description;
-    sauce.mainPepper = sauceM.mainPepper;
-    sauce.heat = sauceM.heat;
-    sauce.userId = sauceM.userId;
+      sauce.save()
+      .then(() => res.status(200).json({ message: 'Objet modifié !'}))
+      .catch(error => res.status(400).json({ error }));
+    })
+  } else {
+    Sauces.findOne({ _id: req.params.id }, function (err, sauce) {
+      sauce.name = sauceM.name;
+      sauce.manufacturer = sauceM.manufacturer;
+      sauce.description = sauceM.description;
+      sauce.mainPepper = sauceM.mainPepper;
+      sauce.heat = sauceM.heat;
+      sauce.userId = sauceM.userId;
+      sauce.imageUrl = sauce.imageUrl;
 
-    sauce.save()
-    .then(() => res.status(200).json({ message: 'Objet modifié !'}))
-    .catch(error => res.status(400).json({ error }));
-  })
+      sauce.save()
+      .then(() => res.status(200).json({ message: 'Objet modifié !'}))
+      .catch(error => res.status(400).json({ error }));
+    })
+  }
 /*
  const sauce = req.file ?
  {
