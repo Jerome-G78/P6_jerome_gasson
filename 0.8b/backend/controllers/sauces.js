@@ -4,6 +4,7 @@
 // import des packages
 const Sauces = require('../models/sauces');
 const fs = require('fs');
+const sauces = require('../models/sauces');
 
 // Fonction de création d'une sauce [C]
 /*
@@ -56,26 +57,45 @@ exports.getOneSauces = (req, res, next) => {
 /*
 Dans cette fonction modifySauces :
 
-Nous commençons par utiliser la fonction parse de JSON pour récupérer les données envoyées par l'utilisateur depuis le "frontend" pour modifier un objet.
-Nous modifions ensuite imageUrl,pour qu'elle contienne le chemin avec le nom de fichier typé (Ex : img.jpg)
-
+Nous commençons par récupérer les données envoyées par l'utilisateur depuis le "frontend" pour modifier un objet.
+Nous modifions ensuite imageUrl, (si une image est envoyé) pour qu'elle contienne le chemin avec le nom de fichier typé (Ex : img.jpg)
 Nous l'incluons dans le modèle "Sauces"
-* ...JSON.pase(req.body.sauce) permet d'éclater le tableau "sauce" en éléments libres (permettant d'y intégrer à la volée la chaîne imageUrl)
 
-Enfin nous mettons à jour l'objet de la base de données via la propriété UpdateOne de mongoose.
-* ...sauce permet d'éclater le tableau "sauce" en éléments libres pour y récupérer l'ID "_id: req.params.id" de l'élément à modifier.
+Enfin nous mettons à jour l'objet de la base de données via la propriété save de mongoose.
+Nous récupérons l'ID "_id: req.params.id" de l'élément à modifier.
 
 Le tout en renvoyant une réponse de réussite en cas de succès, et des erreurs avec le code d'erreur en cas d'échec ;
 */
 exports.modifySauces = (req, res, next) => {
-  const sauce = req.file ?
-  {
-    ...JSON.parse(req.body.sauce),
-    imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
-  } : { ...req.body };
-  Sauces.updateOne({ _id: req.params.id }, { ...sauce, _id: req.params.id })
-  .then(() => res.status(200).json({ message: 'Objet modifié !'}))
-  .catch(error => res.status(400).json({ error }));
+  const sauceM = req.body;
+  const sauceF = req.file;
+  console.log(sauceF);
+  console.log(sauceM);
+
+  Sauces.findOne({ _id: req.params.id }, function (err, sauce) {
+    if(sauceF !=undefined){sauce.imageUrl = `${req.protocol}://${req.get('host')}/images/${sauceF.filename}`}
+
+    sauce.name = sauceM.name;
+    sauce.manufacturer = sauceM.manufacturer;
+    sauce.description = sauceM.description;
+    sauce.mainPepper = sauceM.mainPepper;
+    sauce.heat = sauceM.heat;
+    sauce.userId = sauceM.userId;
+
+    sauce.save()
+    .then(() => res.status(200).json({ message: 'Objet modifié !'}))
+    .catch(error => res.status(400).json({ error }));
+  })
+/*
+ const sauce = req.file ?
+ {
+   ...JSON.parse(req.body.sauce),
+   imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+ } : { ...req.body };
+ Sauces.updateOne({ _id: req.params.id }, { ...sauce, _id: req.params.id })
+ .then(() => res.status(200).json({ message: 'Objet modifié !'}))
+ .catch(error => res.status(400).json({ error }));
+ */
 };
 
 // Fonction de suppression d'une sauce [D]
@@ -183,6 +203,6 @@ exports.likeSauces = (req, res, next) => {
     sauce.save()
       .then(() => res.status(201).json({ message: msg}))
       .catch(error => res.status(400).json({ error }));
-      
+
   });
 };
