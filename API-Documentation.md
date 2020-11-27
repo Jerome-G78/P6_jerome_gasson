@@ -2,7 +2,7 @@
 ---------------------------
 Accès aux différentes API :
 ===========================
-i - Toutes les routes requièrent une authentification, il s'agit d'une API privé.
+### i - Toutes les routes requièrent une authentification, il s'agit d'une API privé.
 ===========================
 ## I - USER
 
