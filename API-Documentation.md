@@ -107,7 +107,7 @@ Permet d'ajouter une sauce à la liste
 -----------------------------412904567211547511972594708190
 Content-Disposition: form-data; name="sauce"
 
->{"name":"PokkY","manufacturer":"Denver","description":"description","mainPepper":"poivre","heat":2,"userId":"5fc0cc29c1fe9a168ce9c563"}
+- {"name":"PokkY","manufacturer":"Denver","description":"description","mainPepper":"poivre","heat":2,"userId":"5fc0cc29c1fe9a168ce9c563"}
 -----------------------------412904567211547511972594708190
 Content-Disposition: form-data; name="image"; filename="blairs.jpg"
 Content-Type: image/jpeg
