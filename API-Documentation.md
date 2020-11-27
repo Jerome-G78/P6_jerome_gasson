@@ -1,15 +1,15 @@
 [Documentation]
 
-Accès aux différentes API :
+# Accès aux différentes API :
 ===========================
 i - Toutes les routes requièrent une authentification, il s'agit d'une API privé.
 ===========================
-I - USER
+## I - USER
 
 	1.	POST /singup ---: Permet de vous inscrire sur le site
 	2.	POST /login ----: Permet de vous authentifiés sur le site
 
-II - SAUCES
+## II - SAUCES
 
 	1.	GET / ----------: Permet de récupérer le tableau des sauces
 	2.	GET /:id -------: Permet de récupérer les informations d'une sauce précise a partir de son ID
