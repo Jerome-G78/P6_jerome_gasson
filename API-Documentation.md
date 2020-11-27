@@ -1,6 +1,6 @@
 [Documentation]
 
-# Accès aux différentes API :
+Accès aux différentes API :
 ===========================
 i - Toutes les routes requièrent une authentification, il s'agit d'une API privé.
 ===========================
@@ -19,7 +19,7 @@ i - Toutes les routes requièrent une authentification, il s'agit d'une API priv
 	6.	POST /:id/like -: Permet à tous les utilisateurs authentifiés d'aimer ou non une sauce dans la liste.
 ---------------------------
 
-[USER]
+## [USER]
 1. POST /singup
 > POST http://NomDuSite.com/singup/
 
@@ -42,7 +42,7 @@ Permet de vous authentifiés sur le site
 - Réponse JSON : `{"userId":"UID","token":"çà'_éè-"}`
 ---------------------------
 
-[SAUCES]
+## [SAUCES]
 1. GET /
 > GET http://NomDuSite.com/
 
