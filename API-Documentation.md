@@ -1,8 +1,9 @@
 [Documentation]
 
 Accès aux différentes API :
-
+---------------------------
 i - Toutes les routes requièrent une authentification, il s'agit d'une API privé.
+---------------------------
 
 POST /singup
 > POST http://NomDuSite.com/singup/
@@ -10,6 +11,7 @@ POST /singup
 Permet de vous inscrire sur le site
 - Attendu : {"email":"Mail@Provider.com","password":"MDP"}
 - Réponse JSON : "Utilisateur Crée!"
+---------------------------
 
 POST /login
 > POST http://NomDuSite.com/login/
@@ -17,6 +19,7 @@ POST /login
 Permet de vous authentifiés sur le site
 - Attendu : {"email":"Mail@Provider.com","password":"MDP"}
 - Réponse JSON : {"userId":"UID","token":"çà'_éè-"}
+---------------------------
 
 GET /
 > GET http://NomDuSite.com/
@@ -38,6 +41,7 @@ Permet de récupérer le tableau des sauces
 		"dislikes": 0,
 		"__v": 0
 	} ...
+---------------------------
 
 GET /:id
 > GET http://NomDuSite.com/5fc0cce5c1fe9a168ce9c564/
@@ -59,6 +63,7 @@ Permet de récupérer les informations d'une sauce précise a partir de son ID
 	"dislikes": 0,
 	"__v": 0
 }
+---------------------------
 
 POST /
 > POST http://NomDuSite.com/
@@ -75,6 +80,7 @@ Content-Disposition: form-data; name="image"; filename="blairs.jpg"
 Content-Type: image/jpeg
 
 ÿØÿà
+---------------------------
 
 PUT /:id
 > PUT http://NomDuSite.com/5fc0cce5c1fe9a168ce9c564/
@@ -82,12 +88,14 @@ PUT /:id
 Permet de mettre à jour une sauce que vous avez créée.
 - Attendu : name / manufacturer / description / mainPepper / heat / imageUrl(facultatif) / userId
 - Réponse : Retour a la page d'accueil & sauvegarde des changement en base.
+---------------------------
 
 DELETE /:id
 > DELETE http://NomDuSite.com/5fc0cce5c1fe9a168ce9c564/
 
 Vous permet de supprimer une sauce que vous avez créée.
 - Attendu : /ID
+---------------------------
 
 POST /:id/like
 > POST http://NomDuSite.com/5fc0cce5c1fe9a168ce9c564/like/
@@ -100,4 +108,5 @@ Permet à tous les utilisateurs authentifiés d'aimer ou non une sauce dans la l
 - 0 annule un choix
 - 1 aime
 
+---------------------------
 En cas d'érreurs, plusieurs messages peuvent s'affichier.
