@@ -10,7 +10,10 @@ POST /singup
 > POST http://NomDuSite.com/singup/
 
 Permet de vous inscrire sur le site
-- Attendu : {"email":"Mail@Provider.com","password":"MDP"}
+- Attendu : 
+	email: { type: String, required: true, unique: true },
+ 	password: { type: String, required: true }
+
 - Réponse JSON : "Utilisateur Crée!"
 ---------------------------
 
@@ -18,7 +21,10 @@ POST /login
 > POST http://NomDuSite.com/login/
 
 Permet de vous authentifiés sur le site
-- Attendu : {"email":"Mail@Provider.com","password":"MDP"}
+- Attendu : 
+	email: { type: String, required: true, unique: true },
+ 	password: { type: String, required: true }
+
 - Réponse JSON : {"userId":"UID","token":"çà'_éè-"}
 ---------------------------
 
@@ -31,16 +37,16 @@ Permet de récupérer le tableau des sauces
 	"0": {
 		"usersLiked": [],
 		"usersDisliked": [],
-		"_id": "5fc0cce5c1fe9a168ce9c564",
-		"name": "Sripacha",
-		"manufacturer": "Swag",
-		"description": "45Ds",
-		"mainPepper": "chilli pepper",
-		"heat": 2,
-		"imageUrl": "http://localhost:3000/images/Sripacha.jpg1606470885761.jpg",
-		"userId": "5fc0cc29c1fe9a168ce9c563",
-		"likes": 0,
-		"dislikes": 0,
+		"_id": "String",
+		"name": "String",
+		"manufacturer": "String",
+		"description": "String",
+		"mainPepper": "String",
+		"heat": Number,
+		"imageUrl": "String",
+		"userId": "String",
+		"likes": Number,
+		"dislikes": Number,
 		"__v": 0
 	} ...
 ---------------------------
@@ -53,17 +59,16 @@ Permet de récupérer les informations d'une sauce précise a partir de son ID
 - Réponse JSON {
 	"usersLiked": [],
 	"usersDisliked": [],
-	"_id": "5fc0cce5c1fe9a168ce9c564",
-	"name": "Sripacha",
-	"manufacturer": "Swag",
-	"description": "Description",
-	"mainPepper": "chilli pepper",
-	"heat": 2,
-	"imageUrl": "http://localhost:3000/images/Sripacha.jpg1606470885761.jpg",
-	"userId": "5fc0cc29c1fe9a168ce9c563",
-	"likes": 0,
-	"dislikes": 0,
-	"__v": 0
+	"_id": "String",
+	"name": "String",
+	"manufacturer": "String",
+	"description": "String",
+	"mainPepper": "String",
+	"heat": Number,
+	"imageUrl": "String",
+	"userId": "String",
+	"likes": Number,
+	"dislikes": Number,
 }
 ---------------------------
 
@@ -71,7 +76,19 @@ POST /
 > POST http://NomDuSite.com/
 
 Permet d'ajouter une sauce à la liste
-- Attendu : name / manufacturer / description / mainPepper / heat / imageUrl / userId
+- Attendu : 
+	name: { type: String, required: true },
+	manufacturer: { type: String, required: true },
+	description: { type: String, required: true },
+	mainPepper: { type: String, required: true },
+	heat: { type: Number, required: true },
+	imageUrl: { type: String, required: true },
+	userId: { type: String, required: true },
+	likes: { type: Number},
+	dislikes: {type: Number},
+	usersLiked: [{type: String}],
+	usersDisliked: [{type: String}]
+
 - Réponse JSON :
 -----------------------------412904567211547511972594708190
 Content-Disposition: form-data; name="sauce"
@@ -81,7 +98,7 @@ Content-Disposition: form-data; name="sauce"
 Content-Disposition: form-data; name="image"; filename="blairs.jpg"
 Content-Type: image/jpeg
 
-ÿØÿà
+ÿØÿà...
 ---------------------------
 
 PUT /:id
@@ -103,7 +120,7 @@ POST /:id/like
 > POST http://NomDuSite.com/5fc0cce5c1fe9a168ce9c564/like/
 
 Permet à tous les utilisateurs authentifiés d'aimer ou non une sauce dans la liste.
-- Attendu : {"userId":"5fc0cc29c1fe9a168ce9c563","like":1}
+- Attendu : {"userId":"String","like":Number}
 - Réponse JSON : {"message": "Like pris en compte !"}
 
 - -1 n'aime pas
