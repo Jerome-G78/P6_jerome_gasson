@@ -36,10 +36,10 @@ POST /login
 
 Permet de vous authentifiés sur le site
 - Attendu : 
-	email: { type: String, required: true, unique: true },
- 	password: { type: String, required: true }
+`	email: { type: String, required: true, unique: true },
+ 	password: { type: String, required: true } `
 
-- Réponse JSON : {"userId":"UID","token":"çà'_éè-"}
+- Réponse JSON : `{"userId":"UID","token":"çà'_éè-"}`
 ---------------------------
 
 [SAUCES]
