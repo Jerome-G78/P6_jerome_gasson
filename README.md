@@ -36,8 +36,8 @@ Depuis 'frontend' executez la commande :
 Celui-ci devrait éxecuter une instance du serveur sur le port 4200 de la machine hôte.
 
 [utilisation]
-Une fois que tous les modules sont chargés/compilés;
-Depuis votre navigateur internet veuillez vous rendre sur le site suivant : http://localhost:4200/
+- Une fois que tous les modules sont chargés/compilés;
+> Depuis votre navigateur internet veuillez vous rendre sur le site suivant : http://localhost:4200/
 
 [révision] 
 - V1 - Release
