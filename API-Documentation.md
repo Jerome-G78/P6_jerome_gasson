@@ -6,21 +6,21 @@ i - Toutes les routes requièrent une authentification, il s'agit d'une API priv
 ===========================
 I - USER
 
-	1	POST /singup ---: Permet de vous inscrire sur le site
-	2	POST /login ----: Permet de vous authentifiés sur le site
+	1.	POST /singup ---: Permet de vous inscrire sur le site
+	2.	POST /login ----: Permet de vous authentifiés sur le site
 
 II - SAUCES
 
-	1	GET / ----------: Permet de récupérer le tableau des sauces
-	2	GET /:id -------: Permet de récupérer les informations d'une sauce précise a partir de son ID
-	3	POST / ---------: Permet d'ajouter une sauce à la liste
-	4	PUT /:id -------: Permet de mettre à jour une sauce que vous avez créée.
-	5	DELETE /:id ----: Vous permet de supprimer une sauce que vous avez créée.
-	6	POST /:id/like -: Permet à tous les utilisateurs authentifiés d'aimer ou non une sauce dans la liste.
+	1.	GET / ----------: Permet de récupérer le tableau des sauces
+	2.	GET /:id -------: Permet de récupérer les informations d'une sauce précise a partir de son ID
+	3.	POST / ---------: Permet d'ajouter une sauce à la liste
+	4.	PUT /:id -------: Permet de mettre à jour une sauce que vous avez créée.
+	5.	DELETE /:id ----: Vous permet de supprimer une sauce que vous avez créée.
+	6.	POST /:id/like -: Permet à tous les utilisateurs authentifiés d'aimer ou non une sauce dans la liste.
 ---------------------------
 
 [USER]
-1 POST /singup
+1. POST /singup
 > POST http://NomDuSite.com/singup/
 
 Permet de vous inscrire sur le site
@@ -31,7 +31,7 @@ Permet de vous inscrire sur le site
 - Réponse JSON : "Utilisateur Crée!"
 ---------------------------
 
-2 POST /login
+2. POST /login
 > POST http://NomDuSite.com/login/
 
 Permet de vous authentifiés sur le site
@@ -43,7 +43,7 @@ Permet de vous authentifiés sur le site
 ---------------------------
 
 [SAUCES]
-1 GET /
+1. GET /
 > GET http://NomDuSite.com/
 
 Permet de récupérer le tableau des sauces
@@ -65,7 +65,7 @@ Permet de récupérer le tableau des sauces
 	} ...
 ---------------------------
 
-2 GET /:id
+2. GET /:id
 > GET http://NomDuSite.com/5fc0cce5c1fe9a168ce9c564/
 
 Permet de récupérer les informations d'une sauce précise a partir de son ID
@@ -86,7 +86,7 @@ Permet de récupérer les informations d'une sauce précise a partir de son ID
 }
 ---------------------------
 
-3 POST /
+3. POST /
 > POST http://NomDuSite.com/
 
 Permet d'ajouter une sauce à la liste
@@ -113,7 +113,7 @@ Content-Disposition: form-data; name="image"; filename="blairs.jpg"
 Content-Type: image/jpeg
 ---------------------------
 
-4 PUT /:id
+4. PUT /:id
 > PUT http://NomDuSite.com/5fc0cce5c1fe9a168ce9c564/
 
 Permet de mettre à jour une sauce que vous avez créée.
@@ -121,14 +121,14 @@ Permet de mettre à jour une sauce que vous avez créée.
 - Réponse : Retour a la page d'accueil & sauvegarde des changement en base.
 ---------------------------
 
-5 DELETE /:id
+5. DELETE /:id
 > DELETE http://NomDuSite.com/5fc0cce5c1fe9a168ce9c564/
 
 Vous permet de supprimer une sauce que vous avez créée.
 - Attendu : /ID
 ---------------------------
 
-6 POST /:id/like
+6. POST /:id/like
 > POST http://NomDuSite.com/5fc0cce5c1fe9a168ce9c564/like/
 
 Permet à tous les utilisateurs authentifiés d'aimer ou non une sauce dans la liste.
