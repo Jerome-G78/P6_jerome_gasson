@@ -6,8 +6,8 @@ i - Toutes les routes requièrent une authentification, il s'agit d'une API priv
 ===========================
 ## I - USER
 
-	1.	POST /singup ---: Permet de vous inscrire sur le site
-	2.	POST /login ----: Permet de vous authentifiés sur le site
+###	1.	POST /singup ---: Permet de vous inscrire sur le site
+###	2.	POST /login ----: Permet de vous authentifiés sur le site
 
 ## II - SAUCES
 
