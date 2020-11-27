@@ -99,16 +99,6 @@ exports.modifySauces = (req, res, next) => {
       .catch(error => res.status(400).json({ error }));
     })
   }
-/*
- const sauce = req.file ?
- {
-   ...JSON.parse(req.body.sauce),
-   imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
- } : { ...req.body };
- Sauces.updateOne({ _id: req.params.id }, { ...sauce, _id: req.params.id })
- .then(() => res.status(200).json({ message: 'Objet modifié !'}))
- .catch(error => res.status(400).json({ error }));
- */
 };
 
 // Fonction de suppression d'une sauce [D]
