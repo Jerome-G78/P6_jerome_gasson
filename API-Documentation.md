@@ -5,16 +5,22 @@ Accès aux différentes API :
 i - Toutes les routes requièrent une authentification, il s'agit d'une API privé.
 
 POST /singup
+> POST http://NomDuSite.com/singup/
+
 Permet de vous inscrire sur le site
 - Attendu : {"email":"Mail@Provider.com","password":"MDP"}
 - Réponse JSON : "Utilisateur Crée!"
 
 POST /login
+> POST http://NomDuSite.com/login/
+
 Permet de vous authentifiés sur le site
 - Attendu : {"email":"Mail@Provider.com","password":"MDP"}
-- Réponse JSON : {"userId":"UID","token":"çà'_éè-..."}
+- Réponse JSON : {"userId":"UID","token":"çà'_éè-"}
 
 GET /
+> GET http://NomDuSite.com/
+
 Permet de récupérer le tableau des sauces
 - Réponse JSON : {
 	"0": {
@@ -34,6 +40,8 @@ Permet de récupérer le tableau des sauces
 	} ...
 
 GET /:id
+> GET http://NomDuSite.com/5fc0cce5c1fe9a168ce9c564/
+
 Permet de récupérer les informations d'une sauce précise a partir de son ID
 - Attendu : /ID
 - Réponse JSON {
@@ -53,13 +61,15 @@ Permet de récupérer les informations d'une sauce précise a partir de son ID
 }
 
 POST /
+> POST http://NomDuSite.com/
+
 Permet d'ajouter une sauce à la liste
-- Attendu : model de sauce : name / manufacturer / description / mainPepper / heat / imageUrl / userId
+- Attendu : name / manufacturer / description / mainPepper / heat / imageUrl / userId
 - Réponse JSON :
 -----------------------------412904567211547511972594708190
 Content-Disposition: form-data; name="sauce"
 
-{"name":"PokkY","manufacturer":"Denver","description":"Desc","mainPepper":"poivre","heat":2,"userId":"5fc0cc29c1fe9a168ce9c563"}
+{"name":"PokkY","manufacturer":"Denver","description":"description","mainPepper":"poivre","heat":2,"userId":"5fc0cc29c1fe9a168ce9c563"}
 -----------------------------412904567211547511972594708190
 Content-Disposition: form-data; name="image"; filename="blairs.jpg"
 Content-Type: image/jpeg
@@ -67,15 +77,21 @@ Content-Type: image/jpeg
 ÿØÿà
 
 PUT /:id
+> PUT http://NomDuSite.com/5fc0cce5c1fe9a168ce9c564/
+
 Permet de mettre à jour une sauce que vous avez créée.
-- Attendu : model de sauce : name / manufacturer / description / mainPepper / heat / imageUrl(facultatif) / userId
+- Attendu : name / manufacturer / description / mainPepper / heat / imageUrl(facultatif) / userId
 - Réponse : Retour a la page d'accueil & sauvegarde des changement en base.
 
 DELETE /:id
+> DELETE http://NomDuSite.com/5fc0cce5c1fe9a168ce9c564/
+
 Vous permet de supprimer une sauce que vous avez créée.
 - Attendu : /ID
 
 POST /:id/like
+> POST http://NomDuSite.com/5fc0cce5c1fe9a168ce9c564/like/
+
 Permet à tous les utilisateurs authentifiés d'aimer ou non une sauce dans la liste.
 - Attendu : {"userId":"5fc0cc29c1fe9a168ce9c563","like":1}
 - Réponse JSON : {"message": "Like pris en compte !"}
