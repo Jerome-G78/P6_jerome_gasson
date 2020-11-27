@@ -6,17 +6,17 @@ i - Toutes les routes requièrent une authentification, il s'agit d'une API priv
 ---------------------------
 I - USER
 
-	POST /singup
-	POST /login
+-	POST /singup 	: Permet de vous inscrire sur le site
+-	POST /login 	: Permet de vous authentifiés sur le site
 
 II - SAUCES
 
-	GET /
-	GET /:id
-	POST /
-	PUT /:id
-	DELETE /:id
-	POST /:id/like
+	GET /			: Permet de récupérer le tableau des sauces
+	GET /:id		: Permet de récupérer les informations d'une sauce précise a partir de son ID
+	POST /			: Permet d'ajouter une sauce à la liste
+	PUT /:id 		: Permet de mettre à jour une sauce que vous avez créée.
+	DELETE /:id 	: Vous permet de supprimer une sauce que vous avez créée.
+	POST /:id/like 	: Permet à tous les utilisateurs authentifiés d'aimer ou non une sauce dans la liste.
 ---------------------------
 
 [USER]
