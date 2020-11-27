@@ -11,12 +11,12 @@ I - USER
 
 II - SAUCES
 
-	GET /			: Permet de récupérer le tableau des sauces
-	GET /:id		: Permet de récupérer les informations d'une sauce précise a partir de son ID
-	POST /			: Permet d'ajouter une sauce à la liste
-	PUT /:id 		: Permet de mettre à jour une sauce que vous avez créée.
-	DELETE /:id 	: Vous permet de supprimer une sauce que vous avez créée.
-	POST /:id/like 	: Permet à tous les utilisateurs authentifiés d'aimer ou non une sauce dans la liste.
+-	GET /			: Permet de récupérer le tableau des sauces
+-	GET /:id		: Permet de récupérer les informations d'une sauce précise a partir de son ID
+-	POST /			: Permet d'ajouter une sauce à la liste
+-	PUT /:id 		: Permet de mettre à jour une sauce que vous avez créée.
+-	DELETE /:id 	: Vous permet de supprimer une sauce que vous avez créée.
+-	POST /:id/like 	: Permet à tous les utilisateurs authentifiés d'aimer ou non une sauce dans la liste.
 ---------------------------
 
 [USER]
