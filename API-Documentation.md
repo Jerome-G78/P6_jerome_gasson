@@ -20,7 +20,7 @@ II - SAUCES
 ---------------------------
 
 [USER]
-POST /singup
+1 POST /singup
 > POST http://NomDuSite.com/singup/
 
 Permet de vous inscrire sur le site
@@ -31,7 +31,7 @@ Permet de vous inscrire sur le site
 - Réponse JSON : "Utilisateur Crée!"
 ---------------------------
 
-POST /login
+2 POST /login
 > POST http://NomDuSite.com/login/
 
 Permet de vous authentifiés sur le site
@@ -43,7 +43,7 @@ Permet de vous authentifiés sur le site
 ---------------------------
 
 [SAUCES]
-GET /
+1 GET /
 > GET http://NomDuSite.com/
 
 Permet de récupérer le tableau des sauces
@@ -65,7 +65,7 @@ Permet de récupérer le tableau des sauces
 	} ...
 ---------------------------
 
-GET /:id
+2 GET /:id
 > GET http://NomDuSite.com/5fc0cce5c1fe9a168ce9c564/
 
 Permet de récupérer les informations d'une sauce précise a partir de son ID
@@ -86,7 +86,7 @@ Permet de récupérer les informations d'une sauce précise a partir de son ID
 }
 ---------------------------
 
-POST /
+3 POST /
 > POST http://NomDuSite.com/
 
 Permet d'ajouter une sauce à la liste
@@ -113,7 +113,7 @@ Content-Disposition: form-data; name="image"; filename="blairs.jpg"
 Content-Type: image/jpeg
 ---------------------------
 
-PUT /:id
+4 PUT /:id
 > PUT http://NomDuSite.com/5fc0cce5c1fe9a168ce9c564/
 
 Permet de mettre à jour une sauce que vous avez créée.
@@ -121,14 +121,14 @@ Permet de mettre à jour une sauce que vous avez créée.
 - Réponse : Retour a la page d'accueil & sauvegarde des changement en base.
 ---------------------------
 
-DELETE /:id
+5 DELETE /:id
 > DELETE http://NomDuSite.com/5fc0cce5c1fe9a168ce9c564/
 
 Vous permet de supprimer une sauce que vous avez créée.
 - Attendu : /ID
 ---------------------------
 
-POST /:id/like
+6 POST /:id/like
 > POST http://NomDuSite.com/5fc0cce5c1fe9a168ce9c564/like/
 
 Permet à tous les utilisateurs authentifiés d'aimer ou non une sauce dans la liste.
