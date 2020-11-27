@@ -4,16 +4,16 @@ P6_Construisez une API sécurisée pour une application d'avis gastronomiques
 [présentation]
 
 Il s'agit d'un projet de création d'API sécurisée pour une application d'avis gastronomiques, elle contient :
-- Un système d'authentification
-- Une requête de liste des sauces sur la page principale
-- Un module d'ajout de sauce
-- Un module de modification/suppresion de sauce (pour son créateur)
-- Un système de "Like/Dislike"
+> Un système d'authentification
+> Une requête de liste des sauces sur la page principale
+> Un module d'ajout de sauce
+> Un module de modification/suppresion de sauce (pour son créateur)
+> Un système de "Like/Dislike"
 
 [prérequis]
 
 - Pour le faire fonctionner vous devez disposer d'un Navigateur récent (Firefox 80/Chrome 86)
-- récupérer le repository : https://github.com/OpenClassrooms-Student-Center/dwj-projet6
+> récupérer le repository : https://github.com/OpenClassrooms-Student-Center/dwj-projet6
 
 [installation]
 
