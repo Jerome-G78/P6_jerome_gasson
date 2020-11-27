@@ -6,17 +6,17 @@ i - Toutes les routes requièrent une authentification, il s'agit d'une API priv
 
 POST /singup
 Permet de vous inscrire sur le site
-    > Attendu : {"email":"Mail@Provider.com","password":"MDP"}
-    > Réponse JSON : "Utilisateur Crée!"
+- Attendu : {"email":"Mail@Provider.com","password":"MDP"}
+- Réponse JSON : "Utilisateur Crée!"
 
 POST /login
 Permet de vous authentifiés sur le site
-    > Attendu : {"email":"Mail@Provider.com","password":"MDP"}
-    > Réponse JSON : {"userId":"UID","token":"çà'_éè-..."}
+- Attendu : {"email":"Mail@Provider.com","password":"MDP"}
+- Réponse JSON : {"userId":"UID","token":"çà'_éè-..."}
 
 GET /
 Permet de récupérer le tableau des sauces
-    > Réponse JSON : {
+- Réponse JSON : {
 	"0": {
 		"usersLiked": [],
 		"usersDisliked": [],
@@ -35,8 +35,8 @@ Permet de récupérer le tableau des sauces
 
 GET /:id
 Permet de récupérer les informations d'une sauce précise a partir de son ID
-    > Attendu : /ID
-    > Réponse JSON {
+- Attendu : /ID
+- Réponse JSON {
 	"usersLiked": [],
 	"usersDisliked": [],
 	"_id": "5fc0cce5c1fe9a168ce9c564",
@@ -54,8 +54,8 @@ Permet de récupérer les informations d'une sauce précise a partir de son ID
 
 POST /
 Permet d'ajouter une sauce à la liste
-    > Attendu : model de sauce : name / manufacturer / description / mainPepper / heat / imageUrl / userId
-    > Réponse JSON :
+- Attendu : model de sauce : name / manufacturer / description / mainPepper / heat / imageUrl / userId
+- Réponse JSON :
 -----------------------------412904567211547511972594708190
 Content-Disposition: form-data; name="sauce"
 
@@ -68,17 +68,17 @@ Content-Type: image/jpeg
 
 PUT /:id
 Permet de mettre à jour une sauce que vous avez créée.
-    Attendu > model de sauce : name / manufacturer / description / mainPepper / heat / imageUrl(facultatif) / userId
-    Réponse > Retour a la page d'accueil & sauvegarde des changement en base.
+- Attendu : model de sauce : name / manufacturer / description / mainPepper / heat / imageUrl(facultatif) / userId
+- Réponse : Retour a la page d'accueil & sauvegarde des changement en base.
 
 DELETE /:id
 Vous permet de supprimer une sauce que vous avez créée.
-    > Attendu : /ID
+- Attendu : /ID
 
 POST /:id/like
 Permet à tous les utilisateurs authentifiés d'aimer ou non une sauce dans la liste.
-    > Attendu : {"userId":"5fc0cc29c1fe9a168ce9c563","like":1}
-    > Réponse JSON : {"message": "Like pris en compte !"}
+- Attendu : {"userId":"5fc0cc29c1fe9a168ce9c563","like":1}
+- Réponse JSON : {"message": "Like pris en compte !"}
 
 - -1 n'aime pas
 - 0 annule un choix
