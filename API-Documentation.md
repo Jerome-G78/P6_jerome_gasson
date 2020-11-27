@@ -24,11 +24,9 @@ i - Toutes les routes requièrent une authentification, il s'agit d'une API priv
 > POST http://NomDuSite.com/singup/
 
 Permet de vous inscrire sur le site
-- Attendu : 
-```
+- Attendu : `
 	email: { type: String, required: true, unique: true },
- 	password: { type: String, required: true } 
-```
+ 	password: { type: String, required: true } `
 
 - Réponse JSON : "Utilisateur Crée!"
 ---------------------------
@@ -92,7 +90,7 @@ Permet de récupérer les informations d'une sauce précise a partir de son ID
 > POST http://NomDuSite.com/
 
 Permet d'ajouter une sauce à la liste
-- Attendu : 
+- Attendu : `
 	name: { type: String, required: true },
 	manufacturer: { type: String, required: true },
 	description: { type: String, required: true },
@@ -103,7 +101,7 @@ Permet d'ajouter une sauce à la liste
 	likes: { type: Number},
 	dislikes: {type: Number},
 	usersLiked: [{type: String}],
-	usersDisliked: [{type: String}]
+	usersDisliked: [{type: String}] `
 
 - Réponse JSON :
 -----------------------------412904567211547511972594708190
@@ -119,7 +117,7 @@ Content-Type: image/jpeg
 > PUT http://NomDuSite.com/5fc0cce5c1fe9a168ce9c564/
 
 Permet de mettre à jour une sauce que vous avez créée.
-- Attendu : name / manufacturer / description / mainPepper / heat / imageUrl(facultatif) / userId
+- Attendu : ` name / manufacturer / description / mainPepper / heat / imageUrl(facultatif) / userId `
 - Réponse : Retour a la page d'accueil & sauvegarde des changement en base.
 ---------------------------
 
@@ -134,7 +132,7 @@ Vous permet de supprimer une sauce que vous avez créée.
 > POST http://NomDuSite.com/5fc0cce5c1fe9a168ce9c564/like/
 
 Permet à tous les utilisateurs authentifiés d'aimer ou non une sauce dans la liste.
-- Attendu : {"userId":"String","like":Number}
+- Attendu : ` {"userId":"String","like":Number} `
 - Réponse JSON : {"message": "Like pris en compte !"}
 
 - -1 n'aime pas
