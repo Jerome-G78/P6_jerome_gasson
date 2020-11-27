@@ -25,8 +25,12 @@ i - Toutes les routes requièrent une authentification, il s'agit d'une API priv
 
 Permet de vous inscrire sur le site
 - Attendu : 
-`	email: { type: String, required: true, unique: true },
- 	password: { type: String, required: true } `
+```
+
+	email: { type: String, required: true, unique: true },
+ 	password: { type: String, required: true } 
+
+```
 
 - Réponse JSON : "Utilisateur Crée!"
 ---------------------------
