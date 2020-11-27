@@ -18,7 +18,7 @@ Il s'agit d'un projet de création d'API sécurisée pour une application d'avis
 [installation]
 
 - Installer un navigateur de votre choix (Chrome, Firefox, Opera, Safari...)
-- Installer Node.js ainsi que NPM (https://www.npmjs.com/package/npm) avec les packages suivants :
+- Installer Node.js ainsi que NPM (https://www.npmjs.com/package/npm) avec les packages suivants (en local --save) :
     > cors , mongoose, mongoose-unique-validator, body-parser, express, jsonwebtoken, multer, fs, bcrypt.
 
 [configuration]
