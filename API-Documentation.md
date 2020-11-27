@@ -4,6 +4,20 @@ Accès aux différentes API :
 ---------------------------
 i - Toutes les routes requièrent une authentification, il s'agit d'une API privé.
 ---------------------------
+I - USER
+
+	POST /singup
+	POST /login
+
+II - SAUCES
+
+	GET /
+	GET /:id
+	POST /
+	PUT /:id
+	DELETE /:id
+	POST /:id/like
+---------------------------
 
 [USER]
 POST /singup
@@ -97,8 +111,6 @@ Content-Disposition: form-data; name="sauce"
 -----------------------------412904567211547511972594708190
 Content-Disposition: form-data; name="image"; filename="blairs.jpg"
 Content-Type: image/jpeg
-
-ÿØÿà...
 ---------------------------
 
 PUT /:id
