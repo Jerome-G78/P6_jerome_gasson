@@ -4,10 +4,10 @@ P6_Construisez une API sécurisée pour une application d'avis gastronomiques
 [présentation]
 
 Il s'agit d'un projet de création d'API sécurisée pour une application d'avis gastronomiques
-    - Page de Vue   (liste des produits)
-    - Page produit  (qui permet de personaliser un produit séléctionné)
-    - Page Panier   (contenant les achats, ainsi qu'un formulaire)
-    - page de validation de commande (Contient le récapitulatif)
+- Page de Vue   (liste des produits)
+- Page produit  (qui permet de personaliser un produit séléctionné)
+- Page Panier   (contenant les achats, ainsi qu'un formulaire)
+- page de validation de commande (Contient le récapitulatif)
 [prérequis]
 
 - Pour le faire fonctionner vous devez disposer d'un Navigateur récent (Firefox 80/Chrome 86)
@@ -23,13 +23,13 @@ Il s'agit d'un projet de création d'API sécurisée pour une application d'avis
 
 - Pour démarrer le serveur, il vous faut executer server.js, disponible dans le dossier backend.
 Depuis 'backend' executez la commande :
-$node server.js
+> $node server.js
 
 Celui-ci devrait éxecuter une instance du serveur sur le port 3000 de la machine hôte.
 
 - Vous devez également charger l'interface (GUI) depuis le dossier frontend.
 Depuis 'frontend' executez la commande :
-$ng serve
+> $ng serve
 
 Celui-ci devrait éxecuter une instance du serveur sur le port 4200 de la machine hôte.
 
