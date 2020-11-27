@@ -5,6 +5,7 @@ Accès aux différentes API :
 i - Toutes les routes requièrent une authentification, il s'agit d'une API privé.
 ---------------------------
 
+[USER]
 POST /singup
 > POST http://NomDuSite.com/singup/
 
@@ -21,6 +22,7 @@ Permet de vous authentifiés sur le site
 - Réponse JSON : {"userId":"UID","token":"çà'_éè-"}
 ---------------------------
 
+[SAUCES]
 GET /
 > GET http://NomDuSite.com/
 
