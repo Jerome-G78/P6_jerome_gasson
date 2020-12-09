@@ -182,7 +182,7 @@ exports.likeSauces = (req, res, next) => {
     if(like == 1){
 
       sauce.likes++;
-      if (sauce.usersLiked.length > 0){
+      if (sauce.usersLiked.length == 0){
         sauce.usersLiked=[uid];
         
       } else{
@@ -194,7 +194,7 @@ exports.likeSauces = (req, res, next) => {
     if(like == -1){
 
       sauce.dislikes++;
-      if (sauce.usersDisliked.length > 0){
+      if (sauce.usersDisliked.length == 0){
         sauce.usersDisliked=[uid];
       } else{
         sauce.usersDisliked.push(uid);
